@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glacia</title>
+    <link rel="stylesheet" href="gradients.css">
+    <link href="https://fonts.googleapis.com/css2?family=Herr+Von+Muellerhoff&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+      @theme {
+        --color-deep: #0f2f2b;
+        --color-glacia: #1f5f57;
+        --color-sage: #5f8f88;
+        --color-mist: #d4e2df;
+        --color-gold: #c9916e;
+        --color-ivory: #f4f1ec;
+        --font-urbanist: "Urbanist", sans-serif;
+        --font-manrope: "Manrope", sans-serif;
+        --font-garamond: "EB Garamond", serif;
+      }
+
+      body {
+        font-family: var(--font-manrope);
+      }
+
+.care {
+  background: linear-gradient(180deg, #e3d5c5, #ece4dd, #f3f3f3);
+}
+.care-big-text {
+  font-family: "Urbanist", sans-serif;
+  font-size: 24vw;
+  font-weight: 500;
+  background: linear-gradient(180deg, rgba(173, 158, 158, 0.55) 8%, rgba(173, 158, 158, 0.05) 74%, rgba(173, 158, 158, 0.05) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.script-red {
+  position: absolute;
+  right: 3%;
+  top: 56%;
+  z-index: 20;
+  font-family: "Herr Von Muellerhoff", cursive;
+  font-size: 100px;
+  line-height: 1;
+  color: #b85040;
+  transform: rotate(-6deg);
+}
+.script-red::after {
+  content: "";
+  position: absolute;
+  left: 4%;
+  right: -4%;
+  bottom: 12%;
+  height: 1.5px;
+  background: #b85040;
+}
+.service-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 410px;
+  padding: 30px 30px 28px;
+  border: 1px solid #6b6b6b;
+  border-radius: 16px;
+  background: #fff;
+  overflow: hidden;
+}
+.service-media {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 30%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 30%);
+}
+.service-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right top;
+}
+.service-tag {
+  position: relative;
+  z-index: 2;
+  align-self: flex-start;
+  padding: 7px 14px;
+  border: 1px solid #222;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #222;
+  background: #fff;
+}
+.service-arrow {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border: 1px solid #222;
+  border-radius: 50%;
+  font-size: 20px;
+  color: #222;
+  background: #fff;
+}
+.offer {
+  background: linear-gradient(180deg, #ffffff 0%, #faf8f4 18%, #f5efea 40%, #efe4dc 62%, #eadcce 82%, #e4d5c3 100%);
+}
+.offer-big-text {
+  font-family: "Urbanist", sans-serif;
+  font-size: 17vw;
+  font-weight: 500;
+  line-height: 1;
+  background: linear-gradient(180deg, rgba(227, 213, 197, 0.65) 10%, rgba(227, 213, 197, 0.06) 78%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.offer-script {
+  font-family: "Herr Von Muellerhoff", cursive;
+  font-size: 8.5vw;
+  line-height: 1;
+  color: #b85040;
+  transform: rotate(-4deg);
+}
+.svc-row {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #8f8a84;
+  padding: 30px 0;
+}
+.svc-row:last-child {
+  border-bottom: 1px solid #8f8a84;
+}
+.svc-thumb {
+  flex: none;
+  width: 0;
+  height: 142px;
+  margin-right: 0;
+  border-radius: 12px;
+  object-fit: cover;
+  opacity: 0;
+  transition: width 0.4s, margin 0.4s, opacity 0.4s;
+}
+.svc-row:hover .svc-thumb {
+  width: 200px;
+  margin-right: 30px;
+  opacity: 1;
+}
+.svc-btn {
+  flex: none;
+  margin-left: auto;
+  padding: 16px 32px;
+  border: 1px solid #222;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #111;
+  transition: background 0.3s, color 0.3s;
+}
+.svc-row:hover .svc-btn {
+  background: #111;
+  color: #fff;
+}
+.texture-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.texture-panel {
+  position: relative;
+  aspect-ratio: 1 / 0.85;
+  overflow: hidden;
+}
+.texture-panel > img {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 100%;
+  width: auto;
+  max-width: none;
+  object-fit: cover;
+}
+.texture-fade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 45%, rgba(255, 255, 255, 0.85) 78%, #fff 100%);
+}
+.texture-script {
+  position: absolute;
+  z-index: 3;
+  font-family: "Herr Von Muellerhoff", cursive;
+  font-size: 7.5vw;
+  line-height: 1;
+  color: #b85040;
+  transform: rotate(-8deg);
+}
+.brand-logo {
+  font-family: "EB Garamond", serif;
+  font-size: 18px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #3a3a3a;
+  text-align: center;
+  line-height: 1.2;
+}
+.brand-logo small {
+  display: block;
+  margin-top: 4px;
+  font-size: 7px;
+  letter-spacing: 0.35em;
+  color: #777;
+}
+.marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+.marquee-group {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 120px;
+  padding-right: 120px;
+}
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
+.team-card {
+  position: relative;
+  aspect-ratio: 300 / 380;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.team-card > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+.team-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 0.7) 100%);
+}
+.team-info {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 22px;
+  z-index: 2;
+  color: #fff;
+}
+.testi {
+  background: linear-gradient(180deg, #ffffff 0%, #faf8f4 25%, #f5efea 50%, #efe4dc 75%, #e4d5c3 100%);
+}
+.testi-big-text {
+  font-family: "Urbanist", sans-serif;
+  font-size: 17vw;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  background: linear-gradient(180deg, rgba(227, 213, 197, 0.75) 12%, rgba(227, 213, 197, 0.05) 78%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.testi-script {
+  font-family: "Herr Von Muellerhoff", cursive;
+  font-size: 7vw;
+  line-height: 1;
+  color: #b85040;
+  transform: rotate(-4deg);
+}
+.testi-track {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding: 0 19.5vw;
+  scroll-padding: 0 19.5vw;
+}
+.testi-track::-webkit-scrollbar {
+  display: none;
+}
+.testi-card {
+  display: flex;
+  flex-direction: column;
+  flex: none;
+  width: 30vw;
+  min-width: 320px;
+  min-height: 270px;
+  padding: 30px 34px;
+  border: 1px solid #6b6b6b;
+  border-radius: 22px;
+  scroll-snap-align: start;
+}
+.testi-avatar {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-family: "Urbanist", sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: #fff;
+}
+.testi-avatar img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.testi-dots {
+  display: inline-flex;
+  gap: 8px;
+  padding: 10px 14px;
+  border: 1px solid #222;
+  border-radius: 999px;
+}
+.testi-dots button {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #c9c2bb;
+  transition: background 0.3s;
+}
+.testi-dots button.is-active {
+  background: #111;
+}
+    </style>
+</head>
+<body>
+
+    <section class="care relative overflow-hidden w-full h-screen">
+
+        <div class="absolute top-0 left-0 right-0 z-20 px-[40px] pt-[10px]">
+
+            <div class="flex justify-end gap-10 text-[11px] font-medium text-[#222] pb-[10px]">
+                <a href="tel:+919892187656" class="flex items-center gap-2"><i class="ri-phone-line text-[13px]"></i> +91 98921 87656</a>
+                <span class="flex items-center gap-2"><i class="ri-time-line text-[13px]"></i> Mon - Sat: 9.00am - 19.00pm</span>
+                <span class="flex items-center gap-2"><i class="ri-map-pin-line text-[13px]"></i> CBD Belapur | Kharghar</span>
+            </div>
+
+            <nav class="grid grid-cols-[1fr_auto_1fr] items-center h-[68px] px-[26px] rounded-[16px] bg-[rgba(250,246,240,0.6)]">
+
+                <a href="#" class="flex flex-col leading-none">
+                    <span class="font-urbanist font-semibold text-[28px] text-deep">Glacia</span>
+                </a>
+
+                <ul class="flex items-center gap-10 text-[14px] font-semibold text-[#111]">
+                    <li><a href="#" class="flex items-center gap-1">Home</a></li>
+                    <li><a href="#" class="flex items-center gap-1">About</a></li>
+                    <li><a href="#" class="flex items-center gap-1">Services</a></li>
+                    <li><a href="#" class="flex items-center gap-1">Gallery</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+
+                <div class="flex items-center justify-end gap-5">
+                    <a href="tel:+919892187656" class="px-[28px] py-[12px] rounded-full border border-[#111] text-[14px] font-semibold text-[#111]">Book Appointment</a>
+                </div>
+
+            </nav>
+        </div>
+
+        <h2 class="care-big-text absolute left-0 right-0 top-[19%] text-center leading-none">beauty</h2>
+
+        <img src="./hero-care.png" alt="" class="absolute top-[-2%] left-[22%] h-[130%] w-auto max-w-none pointer-events-none z-[5]">
+
+        <span class="script-red">Family Salon</span>
+
+        <div class="absolute left-[40px] bottom-[8%] z-10 max-w-[620px]">
+            <h2 class="capitalize font-urbanist text-[64px] leading-none">Salon Care for <br> Your Home Ritual</h2>
+            <p class="mt-5 max-w-[400px] text-[14px] font-medium text-[#6b625c]">Glacia is a family salon for hair, beauty and nails. From haircuts and colour to nails and makeup, we help everyone in your family look and feel their best, at CBD Belapur and Kharghar.</p>
+            <div class="mt-8 flex gap-3">
+                <a href="tel:+919892187656" class="px-[28px] py-[14px] rounded-full bg-white text-[14px] font-semibold text-[#111]">Book Appointment</a>
+                <a href="#" class="px-[28px] py-[14px] rounded-full bg-white text-[14px] font-semibold text-[#111]">View Services</a>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="w-full bg-white px-[24px] pt-[56px] pb-[90px]">
+
+        <div class="text-center">
+            <p class="text-[11px] font-medium uppercase text-[#222]">(Caring hearts, expert hands)</p>
+            <h2 class="mt-5 font-urbanist text-[52px] leading-[1.15] text-[#111]">Premium Hair Services <br> for Your Signature Look</h2>
+        </div>
+
+        <div class="mt-10 grid grid-cols-[1.6fr_1fr_1fr] gap-[18px]">
+
+            <div class="service-card">
+                <div class="service-media" style="width:46%">
+                    <img src="./hero-model.png" alt="" style="object-position:50% 12%">
+                </div>
+                <span class="service-tag">Expert Stylists</span>
+                <div class="relative z-[2] mt-auto">
+                    <h3 class="font-urbanist text-[28px] leading-[1.25] text-[#111]">Precision <br> Haircuts</h3>
+                    <p class="mt-6 max-w-[330px] text-[14px] leading-[2] text-[#666]">Our master stylists create precision cuts tailored to your face shape and hair texture for effortless everyday style.</p>
+                </div>
+                <a href="#" class="service-arrow mt-7"><i class="ri-arrow-right-line"></i></a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-media" style="width:65%">
+                    <img src="./hero-care.png" alt="" style="object-position:70% 18%">
+                </div>
+                <span class="service-tag">Nourishing Rituals</span>
+                <div class="relative z-[2] mt-auto">
+                    <h3 class="font-urbanist text-[28px] leading-[1.25] text-[#111]">Luxury <br> Hair Care</h3>
+                </div>
+                <a href="#" class="service-arrow mt-7"><i class="ri-arrow-right-line"></i></a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-media" style="width:65%">
+                    <img src="./hero.png" alt="" style="object-position:70% 15%">
+                </div>
+                <span class="service-tag">Custom Color</span>
+                <div class="relative z-[2] mt-auto">
+                    <h3 class="font-urbanist text-[28px] leading-[1.25] text-[#111]">Expert Hair <br> Coloring</h3>
+                </div>
+                <a href="#" class="service-arrow mt-7"><i class="ri-arrow-right-line"></i></a>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="offer w-full px-[24px] pt-[70px] pb-[110px]">
+
+        <div class="relative mx-auto w-[62%]">
+
+            <h2 class="offer-big-text text-center">services</h2>
+            <span class="offer-script absolute left-[5%] top-[2%]">We Offer</span>
+
+            <p class="relative -mt-[2vw] text-center font-urbanist text-[34px] leading-[1.35] text-[#111]">Expert Care for Every Hair Type, <br> Texture and Style</p>
+
+        </div>
+
+        <div class="mx-auto mt-[70px] w-[60%]">
+            <div class="svc-row">
+                <img class="svc-thumb" src="./hero-model.png" alt="">
+                <div>
+                    <div class="flex items-start gap-[8px]">
+                        <i class="ri-scissors-2-line mt-[6px] text-[16px] text-[#222]"></i>
+                        <h3 class="font-urbanist text-[46px] leading-[1.1] text-[#111]">Haircuts</h3>
+                    </div>
+                    <p class="mt-4 pl-[24px] text-[14px] text-[#555]">Precision cuts and styling tailored to your face shape, hair texture and personal style.</p>
+                </div>
+                <a href="#" class="svc-btn">Read More</a>
+            </div>
+            <div class="svc-row">
+                <img class="svc-thumb" src="./hero-care.png" alt="">
+                <div>
+                    <div class="flex items-start gap-[8px]">
+                        <i class="ri-drop-line mt-[6px] text-[16px] text-[#222]"></i>
+                        <h3 class="font-urbanist text-[46px] leading-[1.1] text-[#111]">Coloring</h3>
+                    </div>
+                    <p class="mt-4 pl-[24px] text-[14px] text-[#555]">Balayage, highlights and full color created with premium, hair-friendly formulas.</p>
+                </div>
+                <a href="#" class="svc-btn">Read More</a>
+            </div>
+            <div class="svc-row">
+                <img class="svc-thumb" src="./hero.png" alt="">
+                <div>
+                    <div class="flex items-start gap-[8px]">
+                        <i class="ri-sparkling-line mt-[6px] text-[16px] text-[#222]"></i>
+                        <h3 class="font-urbanist text-[46px] leading-[1.1] text-[#111]">Keratin Care</h3>
+                    </div>
+                    <p class="mt-4 pl-[24px] text-[14px] text-[#555]">Smoothing keratin and bond-repair rituals for soft, shiny, frizz-free hair.</p>
+                </div>
+                <a href="#" class="svc-btn">Read More</a>
+            </div>
+            <div class="svc-row">
+                <img class="svc-thumb" src="./hero-model.png" alt="">
+                <div>
+                    <div class="flex items-start gap-[8px]">
+                        <i class="ri-magic-line mt-[6px] text-[16px] text-[#222]"></i>
+                        <h3 class="font-urbanist text-[46px] leading-[1.1] text-[#111]">Hair Styling</h3>
+                    </div>
+                    <p class="mt-4 pl-[24px] text-[14px] text-[#555]">Blowouts, soft waves and sleek looks styled to last from day to evening.</p>
+                </div>
+                <a href="#" class="svc-btn">Read More</a>
+            </div>
+            <div class="svc-row">
+                <img class="svc-thumb" src="./hero-care.png" alt="">
+                <div>
+                    <div class="flex items-start gap-[8px]">
+                        <i class="ri-vip-crown-line mt-[6px] text-[16px] text-[#222]"></i>
+                        <h3 class="font-urbanist text-[46px] leading-[1.1] text-[#111]">Bridal Hair</h3>
+                    </div>
+                    <p class="mt-4 pl-[24px] text-[14px] text-[#555]">Elegant updos and event styling for weddings and your most special moments.</p>
+                </div>
+                <a href="#" class="svc-btn">Read More</a>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="w-full bg-white">
+
+        <div class="texture-grid">
+
+            <div class="texture-panel" style="background:linear-gradient(180deg,#7a5442,#9a6f5a)">
+                <img src="./hero-care.png" alt="">
+                <div class="texture-fade"></div>
+                <h3 class="absolute left-[3%] bottom-[9%] z-[2] font-urbanist text-[3vw] leading-[1.25] text-[#111]">Care for Every <br> Hair Texture</h3>
+                <span class="texture-script left-[40%] bottom-[8%]">One</span>
+                <a href="#" class="absolute right-[5%] bottom-[10%] z-[2] flex items-center gap-2 text-[14px] font-semibold text-[#111]">Explore More <i class="ri-arrow-right-line text-[16px]"></i></a>
+            </div>
+
+            <div class="texture-panel" style="background:linear-gradient(180deg,#fdfaf6,#f3ebe2)">
+                <img src="./hero-model.png" alt="">
+                <div class="texture-fade"></div>
+                <h3 class="absolute left-[3%] bottom-[9%] z-[2] font-urbanist text-[3vw] leading-[1.25] text-[#111]">Luminous Blonde <br> by Colorists</h3>
+                <span class="texture-script left-[58%] bottom-[14%]">Two</span>
+                <a href="#" class="absolute right-[5%] bottom-[10%] z-[2] flex items-center gap-2 text-[14px] font-semibold text-[#111]">Explore More <i class="ri-arrow-right-line text-[16px]"></i></a>
+            </div>
+
+        </div>
+
+        <div class="marquee py-[70px]">
+            <div class="marquee-track">
+                <div class="marquee-group">
+                <div class="brand-logo">Aurelle<small>— Paris —</small></div>
+                <div class="brand-logo">Ondine<small>Hair Spa</small></div>
+                <div class="flex h-[50px] w-[50px] items-center justify-center rounded-full border border-[#3a3a3a] font-garamond text-[22px] text-[#3a3a3a]">M</div>
+                <div class="brand-logo">Lumière</div>
+                <div class="brand-logo">Velour<small>— Hair Laboratory —</small></div>
+                <div class="brand-logo">Orchid<small>Professional</small></div>
+                </div>
+                <div class="marquee-group" aria-hidden="true">
+                <div class="brand-logo">Aurelle<small>— Paris —</small></div>
+                <div class="brand-logo">Ondine<small>Hair Spa</small></div>
+                <div class="flex h-[50px] w-[50px] items-center justify-center rounded-full border border-[#3a3a3a] font-garamond text-[22px] text-[#3a3a3a]">M</div>
+                <div class="brand-logo">Lumière</div>
+                <div class="brand-logo">Velour<small>— Hair Laboratory —</small></div>
+                <div class="brand-logo">Orchid<small>Professional</small></div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="w-full bg-white px-[24px] pt-[40px] pb-[100px]">
+
+        <div class="text-center">
+            <p class="text-[11px] font-medium uppercase text-[#222]">(Talented hands, timeless style)</p>
+            <h2 class="mt-5 font-urbanist text-[52px] leading-[1.15] text-[#111]">Meet the Artists Behind <br> Your Perfect Hair</h2>
+        </div>
+
+        <div class="mx-auto mt-[44px] grid w-[61%] grid-cols-3 gap-[24px]">
+            <div class="team-card" style="background:linear-gradient(180deg,#4a3328,#1d1410)">
+                <img src="./hero-care.png" alt="Olivia Laurent">
+                <div class="team-info">
+                    <h3 class="font-urbanist text-[28px] font-medium leading-[1.1]">Olivia Laurent</h3>
+                    <p class="mt-2 text-[10px] font-medium uppercase tracking-[0.02em]">Creative Director</p>
+                </div>
+            </div>
+
+            <div class="team-card" style="background:linear-gradient(180deg,#2c2a2c,#0e0d0e)">
+                <img src="./hero-model.png" alt="Sophia Moreau">
+                <div class="team-info">
+                    <h3 class="font-urbanist text-[28px] font-medium leading-[1.1]">Sophia Moreau</h3>
+                    <p class="mt-2 text-[10px] font-medium uppercase tracking-[0.02em]">Senior Colorist</p>
+                </div>
+            </div>
+
+            <div class="team-card" style="background:linear-gradient(180deg,#b19d8a,#8c7766)">
+                <img src="./hero.png" alt="Monika Rivers" style="mix-blend-mode:multiply">
+                <div class="team-info">
+                    <h3 class="font-urbanist text-[28px] font-medium leading-[1.1]">Monika Rivers</h3>
+                    <p class="mt-2 text-[10px] font-medium uppercase tracking-[0.02em]">Master Stylist &amp; Barber</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-[40px] flex justify-center">
+            <a href="#" class="px-[28px] py-[16px] rounded-full border border-[#222] text-[14px] font-semibold text-[#111]">View All Team</a>
+        </div>
+
+    </section>
+
+    <section class="testi w-full overflow-hidden pt-[40px] pb-[120px]">
+
+        <div class="relative mx-auto w-[92%]">
+            <h2 class="testi-big-text text-center">testimonials</h2>
+            <span class="testi-script absolute left-[24%] top-[-6%]">Clients Say</span>
+        </div>
+
+        <p class="relative -mt-[3vw] text-center font-urbanist text-[34px] leading-[1.35] text-[#111]">Loved by Clients Who <br> Never Settle for Ordinary</p>
+
+        <div class="testi-track mt-[48px]" id="testiTrack">
+            <div class="testi-card">
+                <div class="flex items-center gap-3">
+                    <i class="ri-double-quotes-r text-[22px] text-[#111]"></i>
+                    <h3 class="font-urbanist text-[20px] font-semibold text-[#111]">Warm Atmosphere</h3>
+                </div>
+                <p class="mt-4 text-[14px] font-medium leading-[1.75] text-[#2a2a2a]">“From the welcome coffee to the final blowout, everything felt effortless. The team is kind, talented and truly detail-obsessed.”</p>
+                <div class="mt-auto flex items-center gap-4 pt-6">
+                    <div class="testi-avatar" style="background:linear-gradient(135deg,#c9a27e,#8c6a50)">
+                        <span>H</span>
+                        <img src="./hero-model.png" alt="Hanna G." style="object-position:51% 33%;transform-origin:50% 36%;transform:scale(2.3)" onerror="this.style.display='none'">
+                    </div>
+                    <div>
+                        <p class="font-urbanist text-[15px] font-semibold text-[#111]">Hanna G.</p>
+                        <p class="mt-1 text-[9px] font-semibold uppercase text-[#222]">Client of Salon</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testi-card">
+                <div class="flex items-center gap-3">
+                    <i class="ri-double-quotes-r text-[22px] text-[#111]"></i>
+                    <h3 class="font-urbanist text-[20px] font-semibold text-[#111]">Flawless Color</h3>
+                </div>
+                <p class="mt-4 text-[14px] font-medium leading-[1.75] text-[#2a2a2a]">“My balayage turned out even better than I imagined. The colorist truly listened and created a shade that feels completely me.”</p>
+                <div class="mt-auto flex items-center gap-4 pt-6">
+                    <div class="testi-avatar" style="background:linear-gradient(135deg,#d9825b,#9a4a2e)">
+                        <span>S</span>
+                        <img src="./hero-care.png" alt="Sophie L." style="object-position:42% 0%;transform-origin:50% 32%;transform:scale(2.3)" onerror="this.style.display='none'">
+                    </div>
+                    <div>
+                        <p class="font-urbanist text-[15px] font-semibold text-[#111]">Sophie L.</p>
+                        <p class="mt-1 text-[9px] font-semibold uppercase text-[#222]">Client of Salon</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testi-card">
+                <div class="flex items-center gap-3">
+                    <i class="ri-double-quotes-r text-[22px] text-[#111]"></i>
+                    <h3 class="font-urbanist text-[20px] font-semibold text-[#111]">Warm Atmosphere</h3>
+                </div>
+                <p class="mt-4 text-[14px] font-medium leading-[1.75] text-[#2a2a2a]">“From the welcome coffee to the final blowout, everything felt effortless. The team is kind, talented and truly detail-obsessed.”</p>
+                <div class="mt-auto flex items-center gap-4 pt-6">
+                    <div class="testi-avatar" style="background:linear-gradient(135deg,#c9a27e,#8c6a50)">
+                        <span>E</span>
+                        <img src="./hero.png" alt="Elena P." style="object-position:55% 0%;transform-origin:55% 28%;transform:scale(2.3)" onerror="this.style.display='none'">
+                    </div>
+                    <div>
+                        <p class="font-urbanist text-[15px] font-semibold text-[#111]">Elena P.</p>
+                        <p class="mt-1 text-[9px] font-semibold uppercase text-[#222]">Client of Salon</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testi-card">
+                <div class="flex items-center gap-3">
+                    <i class="ri-double-quotes-r text-[22px] text-[#111]"></i>
+                    <h3 class="font-urbanist text-[20px] font-semibold text-[#111]">The Perfect Cut</h3>
+                </div>
+                <p class="mt-4 text-[14px] font-medium leading-[1.75] text-[#2a2a2a]">“Finally a haircut that grows out beautifully. Modern and exactly what I asked for. I won’t go anywhere else now.”</p>
+                <div class="mt-auto flex items-center gap-4 pt-6">
+                    <div class="testi-avatar" style="background:linear-gradient(135deg,#8f8a86,#4a4643)">
+                        <span>D</span>
+                        <img src="./hero-care.png" alt="Daniela K." style="object-position:42% 0%;transform-origin:50% 32%;transform:scale(2.3)" onerror="this.style.display='none'">
+                    </div>
+                    <div>
+                        <p class="font-urbanist text-[15px] font-semibold text-[#111]">Daniela K.</p>
+                        <p class="mt-1 text-[9px] font-semibold uppercase text-[#222]">Client of Salon</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testi-card">
+                <div class="flex items-center gap-3">
+                    <i class="ri-double-quotes-r text-[22px] text-[#111]"></i>
+                    <h3 class="font-urbanist text-[20px] font-semibold text-[#111]">Worth Every Minute</h3>
+                </div>
+                <p class="mt-4 text-[14px] font-medium leading-[1.75] text-[#2a2a2a]">“I have been to many salons in the city, but this is the only one that truly understands my hair. Every visit feels like a little escape.”</p>
+                <div class="mt-auto flex items-center gap-4 pt-6">
+                    <div class="testi-avatar" style="background:linear-gradient(135deg,#b58b8b,#7a5656)">
+                        <span>M</span>
+                        <img src="./hero-model.png" alt="Maya R." style="object-position:51% 33%;transform-origin:50% 36%;transform:scale(2.3)" onerror="this.style.display='none'">
+                    </div>
+                    <div>
+                        <p class="font-urbanist text-[15px] font-semibold text-[#111]">Maya R.</p>
+                        <p class="mt-1 text-[9px] font-semibold uppercase text-[#222]">Client of Salon</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-[40px] flex justify-center">
+            <div class="testi-dots" id="testiDots">
+                <button type="button" aria-label="Slide 1"></button>
+                <button type="button" class="is-active" aria-label="Slide 2"></button>
+                <button type="button" aria-label="Slide 3"></button>
+            </div>
+        </div>
+
+    </section>
+
+    <script>
+        (function () {
+            var track = document.getElementById('testiTrack');
+            var dots = document.querySelectorAll('#testiDots button');
+            var cards = track.querySelectorAll('.testi-card');
+            function step() { return cards[0].offsetWidth + 24; }
+            function update() {
+                var max = track.scrollWidth - track.clientWidth;
+                var i = Math.round((track.scrollLeft / max) * (dots.length - 1));
+                dots.forEach(function (d, n) { d.classList.toggle('is-active', n === i); });
+            }
+            track.addEventListener('scroll', update, { passive: true });
+            // start on slide 2
+            (function () {
+                var max = track.scrollWidth - track.clientWidth;
+                track.scrollTo({ left: max / (dots.length - 1), behavior: 'instant' });
+                update();
+            })();
+            dots.forEach(function (d, n) {
+                d.addEventListener('click', function () {
+                    var max = track.scrollWidth - track.clientWidth;
+                    track.scrollTo({ left: (max / (dots.length - 1)) * n, behavior: 'smooth' });
+                });
+            });
+        })();
+    </script>
+
+</body>
+</html>

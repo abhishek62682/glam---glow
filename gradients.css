@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&family=EB+Garamond:wght@400;500;600&display=swap");
+
+:root {
+  --g-deep: #0f2f2b;
+  --g-dark: #17463f;
+  --g-green: #1f5f57;
+  --g-sage: #5f8f88;
+  --g-mist: #d4e2df;
+  --g-gold: #c9916e;
+  --g-gold-light: #e6c3a6;
+  --g-ivory: #f4f1ec;
+
+  --g-deep-0: rgb(15 47 43 / 0);
+  --g-green-0: rgb(31 95 87 / 0);
+  --g-ivory-0: rgb(244 241 236 / 0);
+
+  --gradient-brand: linear-gradient(135deg, var(--g-dark), var(--g-green));
+  --gradient-brand-deep: linear-gradient(180deg, var(--g-green), var(--g-deep));
+  --gradient-brand-soft: linear-gradient(180deg, var(--g-sage), var(--g-green));
+  --gradient-mist: linear-gradient(180deg, var(--g-ivory), var(--g-mist));
+
+  --gradient-gold: linear-gradient(135deg, var(--g-gold-light), var(--g-gold));
+  --gradient-brand-gold: linear-gradient(90deg, var(--g-deep), var(--g-green) 55%, var(--g-gold));
+
+  --gradient-overlay-top: linear-gradient(180deg, var(--g-deep), var(--g-deep-0));
+  --gradient-overlay-bottom: linear-gradient(0deg, var(--g-deep), var(--g-deep-0));
+  --gradient-overlay-both: linear-gradient(
+    180deg,
+    var(--g-deep) 0%,
+    var(--g-deep-0) 30%,
+    var(--g-deep-0) 60%,
+    var(--g-deep) 100%
+  );
+
+  --gradient-fade-to-green: linear-gradient(180deg, var(--g-green-0), var(--g-green));
+  --gradient-fade-to-ivory: linear-gradient(180deg, var(--g-ivory-0), var(--g-ivory));
+
+  --gradient-glow-gold: radial-gradient(circle at 70% 25%, rgb(230 195 166 / 0.5), transparent 45%);
+}
+
+.gradient-brand            { background-image: var(--gradient-brand); }
+.gradient-brand-deep       { background-image: var(--gradient-brand-deep); }
+.gradient-brand-soft       { background-image: var(--gradient-brand-soft); }
+.gradient-mist             { background-image: var(--gradient-mist); }
+.gradient-gold             { background-image: var(--gradient-gold); }
+.gradient-brand-gold       { background-image: var(--gradient-brand-gold); }
+.gradient-fade-to-green    { background-image: var(--gradient-fade-to-green); }
+.gradient-fade-to-ivory    { background-image: var(--gradient-fade-to-ivory); }
+.gradient-glow-gold        { background-image: var(--gradient-glow-gold); }
+
+.gradient-overlay-top,
+.gradient-overlay-bottom,
+.gradient-overlay-both {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.gradient-overlay-top    { background-image: var(--gradient-overlay-top);    height: 40%; bottom: auto; }
+.gradient-overlay-bottom { background-image: var(--gradient-overlay-bottom); height: 60%; top: auto; }
+.gradient-overlay-both   { background-image: var(--gradient-overlay-both); }
+
+.gradient-text {
+  background-image: var(--gradient-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
